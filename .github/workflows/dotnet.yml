@@ -21,7 +21,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration release
+      run: dotnet build --no-restore --configuration release --output webapp
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
@@ -30,4 +30,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: webapp
-        path: bin/Release/netcoreapp3.1/
+        path: webapp
