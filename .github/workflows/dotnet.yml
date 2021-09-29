@@ -21,20 +21,20 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration release --output webapp
+      run: dotnet build --configuration Release --no-restore 
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish
+      run: dotnet publish --configuration release --output aspnet-webapp -p:PublishSingleFile=true --self-contained false
     - name: Upload Aritfact
       uses: actions/upload-artifact@v2        
       with:
         name: webapp
-        path: webapp
+        path: aspnet-webapp
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'hellowebf1'
         publish-profile: ${{ secrets.WEBAPP_PUBLISH_PROFILE }}
-        package: './webapp'
+        package: './aspnet-webapp'
         
