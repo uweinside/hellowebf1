@@ -1,5 +1,6 @@
 name: .NET
 
+
 on:
   push:
     branches: [ master ]
@@ -9,7 +10,8 @@ on:
 
 jobs:
   build:
-
+  
+    environment: production_environment
     runs-on: ubuntu-18.04
 
     steps:
