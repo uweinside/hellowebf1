@@ -27,14 +27,14 @@ jobs:
     - name: Publish
       run: dotnet publish
     - name: Upload Aritfact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2        
+      with:
+        name: webapp
+        path: webapp
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.WEBAPP_NAME }}
         publish-profile: ${{ secrets.WEBAPP_PUBLISH_PROFILE }}
-        package: './webapp
-    
-      with:
-        name: webapp
-        path: webapp
+        package: './webapp'
+        
