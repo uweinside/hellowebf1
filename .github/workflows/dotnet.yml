@@ -25,4 +25,9 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish 
+      run: dotnet publish
+    - name: Upload Aritfact
+      uses: actions/upload-artifact@v2
+      with:
+        name: webapp
+        path: bin/Debug/netcoreapp3.1/publish/
