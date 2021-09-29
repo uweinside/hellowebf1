@@ -25,7 +25,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish --configuration release --output aspnet-webapp -p:PublishSingleFile=true --self-contained false
+      run: dotnet publish --configuration release --output aspnet-webapp
     - name: Upload Aritfact
       uses: actions/upload-artifact@v2        
       with:
